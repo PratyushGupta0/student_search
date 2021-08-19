@@ -91,8 +91,27 @@ export class SearchService {
       }
 
       if (!(term === null || term === '')) {
-        const termregex = new RegExp(escape(term).replace(/\s+/g, ' '), 'i');
+        let arr=term.split();
+if(arr.length===2)
+{
+const n1=new RegExp(escape(arr[0]).replace(/\s+/g, ' '), 'i');
+const n2=new RegExp(escape(arr[1]).replace(/\s+/g, ' '), 'i');
+return ((n1.test(elem.i) || n1.test(elem.u) || n1.test(elem.n.replace(/\s+/g, ' ')))&&(n2.test(elem.i) || n2.test(elem.u) || n2.test(elem.n.replace(/\s+/g, ' '))));
+}
+if(arr.length===1)
+{
+const termregex = new RegExp(escape(term).replace(/\s+/g, ' '), 'i');
         return (termregex.test(elem.i) || termregex.test(elem.u) || termregex.test(elem.n.replace(/\s+/g, ' ')));
+}
+if(arr.length===3)
+{
+const n1=new RegExp(escape(arr[0]).replace(/\s+/g, ' '), 'i');
+const n2=new RegExp(escape(arr[1]).replace(/\s+/g, ' '), 'i');
+const n3=new RegExp(escape(arr[2]).replace(/\s+/g, ' '), 'i');
+return ((n1.test(elem.i) || n1.test(elem.u) || n1.test(elem.n.replace(/\s+/g, ' ')))&&(n2.test(elem.i) || n2.test(elem.u) || n2.test(elem.n.replace(/\s+/g, ' ')))&&(n3.test(elem.i) || n3.test(elem.u) || n3.test(elem.n.replace(/\s+/g, ' '))));
+}
+//         const termregex = new RegExp(escape(term).replace(/\s+/g, ' '), 'i');
+//         return (termregex.test(elem.i) || termregex.test(elem.u) || termregex.test(elem.n.replace(/\s+/g, ' ')));
       }
 
       return true;
