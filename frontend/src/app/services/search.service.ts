@@ -91,7 +91,7 @@ export class SearchService {
       }
 
       if (!(term === null || term === '')) {
-        let arr=term.split();
+        let arr=term.split(" ");
 if(arr.length===2)
 {
 const n1=new RegExp(escape(arr[0]).replace(/\s+/g, ' '), 'i');
